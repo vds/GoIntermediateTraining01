@@ -13,7 +13,7 @@ Let's setup the go package directory
 ### Setup application home folder
 Check the existence of the folder "~/tedfeed", "~/tedfeed/videos",
 "~/tedfeed/thumbnails" if they don't exists, create them.
-Hint: os.Stat, os.Mkdir, os.MkdirAll
+Hint: **os.Stat**, **os.Mkdir**, **os.MkdirAll**
 
 Create main package and main function
 
@@ -23,6 +23,6 @@ Hint: is is common for go application to have modules for binaries in the cmd fo
 Download the atom feed from ted.com: "https://www.ted.com/talks/atom" and print the size of the
 feed to the screen.
 
-Hint: http.Get, ioutil.ReadAll
+Hint: **http.Get**, **ioutil.ReadAll**
 
 Hint: don't forget to close the body of the response, defer is your friend.
