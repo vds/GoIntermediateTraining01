@@ -10,8 +10,8 @@ Let's test if our go environment is correctly setup
     /home/vds/go
 
     $> echo $GOROOT
-    /home/vds/local/go
-
+    /home/vds/local/go (*nix)
+    /Go (MSWindows)
 
 ### Setup our first package
 Let's set up our go package
