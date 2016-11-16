@@ -33,7 +33,7 @@ Hint: [Example of unmarshalling xml in go](https://golang.org/pkg/encoding/xml/#
 ### go get and dependencies
 Get the dependency using go get utility
 
-    $> go get github.com:vds/atommimiparse
+    $> go get github.com/vds/atomminiparse
 
 ### Accessing feed data
 To unmarhsall the atom feed into a Feed instance we could 
