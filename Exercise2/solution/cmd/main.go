@@ -7,6 +7,9 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+
+	"encoding/xml"
+	"errors"
 	"tedfeed"
 )
 
@@ -19,6 +22,16 @@ const (
 	// TED.com atom feed URL
 	url = "https://www.ted.com/talks/atom"
 )
+
+//function for parsing received body to xml
+func Parse(body []byte) (*tedfeed.Feed, error) {
+	var f tedfeed.Feed
+	err := xml.Unmarshal(body, &f)
+	if err != nil {
+		return nil, errors.New(fmt.Sprintf("%s:error parsing the feed", err))
+	}
+	return &f, nil
+}
 
 func main() {
 	// Initializing tedfeed home directory as Exercise 1 was requesting
