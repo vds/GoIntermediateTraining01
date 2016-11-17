@@ -1,24 +1,37 @@
 # GoBasicTraining
-This repository containse notes for  Go basic training classes/workshops. 
+This repository contains notes for Go basic training classes/workshops. 
 
 Exercise 0:
  * testing go environment
  * first go package
- * main package
+ * package main
  * function main
- * import package
+ * import stdlib package
  * go run
 
 Exercise 1:
+ * package structure
  * working with OS environment
  * HTTP request
  * working with buffers
-
 
 Exercise 2:
  * go struct
  * xml unmarshal
 
+Exercise 3:
+ * struct method
+ * write on disk
+
+Exercise 4:
+ * concurrency and the go command
+ * wait groups
+
+Exercise 5:
+ * gob
+ 
+Exercise 6
+ * flag
 
 References to go spec point to: https://golang.org/ref/spec
 
