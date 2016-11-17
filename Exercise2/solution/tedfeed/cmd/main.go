@@ -62,11 +62,11 @@ func main() {
 		// Something went wrong reading the request body, terminate
 		log.Fatalf("%s\n", err)
 	}
-	fd, err := tedfeed.parse(output)
+	fd, err := parse(output)
 	if err != nil {
 		log.Fatalln("error parsing the feed")
 
 	}
 	// Printing the title of the feed as Exercise 2 was reqesting
-	fmt.Println(fd.Title)
+	log.Printf("The title of the feed is: %s\n", fd.Title)
 }
