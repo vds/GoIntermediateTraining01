@@ -23,8 +23,9 @@ const (
 	url = "https://www.ted.com/talks/atom"
 )
 
-//function for parsing received body to xml
-func Parse(body []byte) (*tedfeed.Feed, error) {
+// parse receive the atom feed, unmarshals it into a Feed instance
+// and returns it.
+func parse(body []byte) (*tedfeed.Feed, error) {
 	var f tedfeed.Feed
 	err := xml.Unmarshal(body, &f)
 	if err != nil {
@@ -61,18 +62,11 @@ func main() {
 		// Something went wrong reading the request body, terminate
 		log.Fatalf("%s\n", err)
 	}
-
-	//EXERCISE2 SOLUTION BEGIN HERE
-	//parsing output xml string to type feed
-	if fd, err := tedfeed.Parse(output); err != nil {
-
-		//if error occurred
+	fd, err := tedfeed.parse(output)
+	if err != nil {
 		log.Fatalln("error parsing the feed")
 
-	} else {
-
-		//if succes
-		fmt.Println(fd.Title)
-
 	}
+	// Printing the title of the feed as Exercise 2 was reqesting
+	fmt.Println(fd.Title)
 }
