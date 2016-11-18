@@ -64,6 +64,7 @@ func download(url string, fPath string, title string) {
 }
 
 func main() {
+
 	// Initializing tedfeed home directory as Exercise 1 was requesting
 	home := os.Getenv("HOME")
 	dirs := []string{filepath.Join(home, tf, videos), filepath.Join(home, tf, thumbs)}
@@ -95,27 +96,18 @@ func main() {
 	fd, err := parse(output)
 	if err != nil {
 		log.Fatalln("error parsing the feed")
-
 	}
+
 	// Printing the title of the feed as Exercise 2 was reqesting
 	log.Printf("The title of the feed is: %s\n", fd.Title)
 
-	//iterate over tedfeed.Entry[].Link[]
-	for _, entry := range fd.Entry {
-		for _, link := range entry.Link {
+	m := fd.GetLinksList()
+	for title, link := range m {
 
-			//must get only Rel == "enclosure" link
-			if link.Rel == "enclosure" {
+		//launching download task
+		log.Printf("Downloading %s", title)
 
-				//launching download task
-				log.Printf("Downloading %s", entry.Title)
-
-				videoName := string(entry.Title)
-
-				//download video
-				download(link.HRef, dirs[0], videoName+".mp4")
-			}
-		}
+		//download video
+		download(link, dirs[0], title+".mp4")
 	}
-
 }

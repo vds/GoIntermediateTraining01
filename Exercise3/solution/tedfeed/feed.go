@@ -23,3 +23,21 @@ type Feed struct {
 	Title   string  `xml:"title"`
 	Entry   []Entry `xml:"entry"`
 }
+
+func (fd Feed) GetLinksList() map[string]string {
+
+	m := make(map[string]string)
+
+	//iterate over tedfeed.Entry[].Link[]
+	for _, entry := range fd.Entry {
+		for _, link := range entry.Link {
+
+			//must get only Rel == "enclosure" link
+			if link.Rel == "enclosure" {
+				m[entry.Title] = link.HRef
+			}
+		}
+	}
+
+	return m
+}
