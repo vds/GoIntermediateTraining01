@@ -36,10 +36,14 @@ func parse(body []byte) (*tedfeed.Feed, error) {
 	return &f, nil
 }
 
-func download(url string, videoName string) {
+func download(url string, fPath string, title string) {
 
 	//creating video.file
-	video, err := os.Create(filepath.Join(os.Getenv("HOME"), tf, videos, videoName+".mp4"))
+	file, err := os.Create(filepath.Join(fPath, title))
+	if err != nil {
+		// Something went wrong creating video file, terminate
+		log.Fatalf("%s\n", err)
+	}
 
 	//GET the video
 	resp, err := http.Get(url)
@@ -50,13 +54,13 @@ func download(url string, videoName string) {
 		log.Fatalf("%s\n", err)
 	}
 
-	if _, err := io.Copy(video, resp.Body); err != nil {
-		log.Fatalf("error: %s while downloading video: %s\n", videoName, err)
+	if _, err := io.Copy(file, resp.Body); err != nil {
+		log.Fatalf("error: %s while downloading video: %s\n", title, err)
 	} else {
-		log.Printf("Downloaded video: %s\n", videoName)
+		log.Printf("Downloaded file: %s\n", title)
 	}
 
-	video.Close()
+	file.Close()
 }
 
 func main() {
@@ -105,8 +109,11 @@ func main() {
 
 				//launching download task
 				log.Printf("Downloading %s", entry.Title)
-				download(link.HRef, string(entry.Title))
 
+				videoName := string(entry.Title)
+
+				//download video
+				download(link.HRef, dirs[0], videoName+".mp4")
 			}
 		}
 	}
