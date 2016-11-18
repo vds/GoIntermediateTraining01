@@ -1,20 +1,22 @@
 # Hello World
+we'll learn the very basics of go, how to test the go environment, how to create the first package and to run our first applicatio.
 
 ### Go environment check
-Let's test if our go environment is correctly setup
+Let's test if our go environment is correctly setup:
 
     $> go version
-    go version go1.7 linux/amd64
+    go version goXXXXX
 
     $> echo $GOPATH
-    /home/vds/go
-
+    /home/XXXXX/go
+    /Home/XXXXX (MSWindows)
+    
     $> echo $GOROOT
-    /home/vds/local/go (*nix)
+    /home/XXXX/local/go (*nix)
     /Go (MSWindows)
 
 ### Setup our first package
-Let's set up our go package
+Let's set up our go package:
 
     $> mkdir $GOPATH/src/helloworld
 
@@ -40,6 +42,3 @@ func main() {
 
     $> go run helloworld.go
     Hello, World
-
-
-
