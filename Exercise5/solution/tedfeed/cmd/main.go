@@ -71,7 +71,6 @@ func download(url string, fPath string, title string, waitGroup sync.WaitGroup) 
 	file.Close()
 }
 
-
 func main() {
 
 	// Initializing tedfeed home directory as Exercise 1 was requesting
@@ -131,11 +130,13 @@ func main() {
 		waitGroup.Add(1)
 
 		//launch download video task
-		go download(link, dirs[0], title +".mp4", waitGroup)
+		go download(link, dirs[0], title+".mp4", waitGroup)
 	}
-
-	//TODO handle catalog
 
 	//Exercise 4: Wait for all downloads to complete.
 	waitGroup.Wait()
+
+	//Exercise 5: write on catalog
+
+
 }

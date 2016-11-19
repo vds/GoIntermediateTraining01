@@ -116,6 +116,6 @@ func main() {
 		log.Printf("Downloading %s", title)
 
 		//download video
-		download(link, dirs[0], title +".mp4")
+		download(link, dirs[0], title+".mp4")
 	}
 }

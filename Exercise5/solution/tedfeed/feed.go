@@ -1,9 +1,9 @@
 package tedfeed
 
 import (
-	"fmt"
-	"encoding/gob"
 	"bytes"
+	"encoding/gob"
+	"fmt"
 	"log"
 )
 
@@ -51,17 +51,3 @@ func (fd Feed) GetLinksList() map[string]string {
 	return m
 }
 
-func (fd Feed) DecodeCatalog(bBuffer bytes.Buffer) (string, error) {
-	dec := gob.NewDecoder(&bBuffer)
-
-	err := dec.Decode(&fd)
-	if err != nil {
-		log.Fatal("decode error:", err)
-	}
-
-	var catalog string
-	for _, entry := range fd.Entry {
-		catalog = fmt.Sprintf("%s(%s): from %s\n", entry.Title, entry.Duration, entry.SpeakerName)
-	}
-	return catalog
-}

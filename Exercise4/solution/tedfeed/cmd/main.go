@@ -128,7 +128,7 @@ func main() {
 		waitGroup.Add(1)
 
 		//launch download video task
-		go download(link, dirs[0], title +".mp4", waitGroup)
+		go download(link, dirs[0], title+".mp4", waitGroup)
 	}
 
 	//Exercise 4: Wait for all downloads to complete.
