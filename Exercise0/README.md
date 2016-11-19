@@ -42,3 +42,7 @@ func main() {
 
     $> go run helloworld.go
     Hello, World
+
+
+### Useful Links
+A Tour of Go: https://tour.golang.org/welcome/1
