@@ -10,9 +10,12 @@ import (
 
 	"encoding/xml"
 	"errors"
-	"tedfeed"
 
 	"io"
+
+	//TODO change me!!!!
+	"github.com/GianniGM/GoBasicTraining/Exercise3/solution/tedfeed"
+	"strings"
 )
 
 const (
@@ -101,13 +104,18 @@ func main() {
 	// Printing the title of the feed as Exercise 2 was reqesting
 	log.Printf("The title of the feed is: %s\n", fd.Title)
 
+	// Exercise 3
 	m := fd.GetLinksList()
-	for title, link := range m {
+	for t, link := range m {
 
-		//launching download task
+		//video title could have unconconventional characters
+		title := strings.Replace(t, "\"", "", -1)
+		title = strings.Replace(title, "?", "", -1)
+
+		//launching download message
 		log.Printf("Downloading %s", title)
 
 		//download video
-		download(link, dirs[0], title+".mp4")
+		download(link, dirs[0], title +".mp4")
 	}
 }

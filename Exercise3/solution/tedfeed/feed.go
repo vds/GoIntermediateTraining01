@@ -24,8 +24,10 @@ type Feed struct {
 	Entry   []Entry `xml:"entry"`
 }
 
+//exercise 3: adding method who iterate over Feed Type and returns a map[Title]Link
 func (fd Feed) GetLinksList() map[string]string {
 
+	//creating map
 	m := make(map[string]string)
 
 	//iterate over tedfeed.Entry[].Link[]

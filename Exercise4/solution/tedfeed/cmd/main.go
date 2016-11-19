@@ -10,12 +10,14 @@ import (
 
 	"encoding/xml"
 	"errors"
-	"tedfeed"
 
 	"io"
 
 	"strings"
 	"sync"
+
+	//TODO change me
+	"github.com/GianniGM/GoBasicTraining/Exercise4/solution/tedfeed"
 )
 
 const (
@@ -104,37 +106,31 @@ func main() {
 		log.Fatalln("error parsing the feed")
 	}
 
-	// Printing the title of the feed as Exercise 2 was reqesting
+	// Printing the title of the feed as Exercise 2 was requesting
 	log.Printf("The title of the feed is: %s\n", fd.Title)
 
-	//exercise 4
+	//exercise 3 + 4 down here
+
+	//exercise 4: add waitGroup for wait all goroutine
 	var waitGroup sync.WaitGroup
 
-	//iterate over tedfeed.Entry[].Link[]
-	for _, entry := range fd.Entry {
-		for _, link := range entry.Link {
+	m := fd.GetLinksList()
+	for t, link := range m {
 
-			//must get only Rel == "enclosure" link
-			if link.Rel == "enclosure" {
+		//video Title could have unconconventional characters like '?' or ' " '
+		title := strings.Replace(t, "\"", "", -1)
+		title = strings.Replace(title, "?", "", -1)
 
-				//launching download task
-				log.Printf("Downloading %s", entry.Title)
+		//launching download message
+		log.Printf("Downloading %s", title)
 
-				videoName := string(entry.Title)
+		//Exercise 4: incrementing counter of waitGroups
+		waitGroup.Add(1)
 
-				//videoName could have unconconventional characters
-				videoName = strings.Replace(videoName, "\"", "", -1)
-				videoName = strings.Replace(videoName, "?", "", -1)
-
-				// Increment the WaitGroup counter.
-				waitGroup.Add(1)
-
-				//download video
-				go download(link.HRef, dirs[0], videoName+".mp4", waitGroup)
-			}
-		}
+		//launch download video task
+		go download(link, dirs[0], title +".mp4", waitGroup)
 	}
 
-	// Wait for all downloads to complete.
+	//Exercise 4: Wait for all downloads to complete.
 	waitGroup.Wait()
 }
