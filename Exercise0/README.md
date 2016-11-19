@@ -44,5 +44,5 @@ func main() {
     Hello, World
 
 
-### Useful Links
+### References
 A Tour of Go: https://tour.golang.org/welcome/1

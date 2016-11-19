@@ -31,7 +31,7 @@ Hint: **http.Get**, **ioutil.ReadAll**
 
 Hint: don't forget to close the body of the response, defer is your friend.
 
-### Useful Links
+### References
 * os package: https://golang.org/pkg/os/
 * user package: https://golang.org/pkg/os/user/
 * net/http package: https://golang.org/pkg/net/http/
