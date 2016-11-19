@@ -42,3 +42,8 @@ func main() {
 
     $> go run helloworld.go
     Hello, World
+
+
+### References
+[A Tour of Go]( https://tour.golang.org/welcome/1)
+[builtin]( https://golang.org/pkg/builtin/)

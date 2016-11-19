@@ -10,7 +10,12 @@ import (
 
 	"encoding/xml"
 	"errors"
-	"github.com/GianniGM/GoBasicTraining/Exercise2/solution/tedfeed"
+
+	"io"
+
+	//TODO change me!!!!
+	"github.com/GianniGM/GoBasicTraining/Exercise3/solution/tedfeed"
+	"strings"
 )
 
 const (
@@ -34,7 +39,35 @@ func parse(body []byte) (*tedfeed.Feed, error) {
 	return &f, nil
 }
 
+func download(url string, fPath string, title string) {
+
+	//creating video.file
+	file, err := os.Create(filepath.Join(fPath, title))
+	if err != nil {
+		// Something went wrong creating video file, terminate
+		log.Fatalf("%s\n", err)
+	}
+
+	//GET the video
+	resp, err := http.Get(url)
+	defer resp.Body.Close()
+
+	if err != nil {
+		// Something went wrong downloading the video, terminate
+		log.Fatalf("%s\n", err)
+	}
+
+	if _, err := io.Copy(file, resp.Body); err != nil {
+		log.Fatalf("error: %s while downloading video: %s\n", title, err)
+	} else {
+		log.Printf("Downloaded file: %s\n", title)
+	}
+
+	file.Close()
+}
+
 func main() {
+
 	// Initializing tedfeed home directory as Exercise 1 was requesting
 	home := os.Getenv("HOME")
 	dirs := []string{filepath.Join(home, tf, videos), filepath.Join(home, tf, thumbs)}
@@ -62,11 +95,27 @@ func main() {
 		// Something went wrong reading the request body, terminate
 		log.Fatalf("%s\n", err)
 	}
+
 	fd, err := parse(output)
 	if err != nil {
 		log.Fatalln("error parsing the feed")
-
 	}
+
 	// Printing the title of the feed as Exercise 2 was reqesting
 	log.Printf("The title of the feed is: %s\n", fd.Title)
+
+	// Exercise 3
+	m := fd.GetLinksList()
+	for t, link := range m {
+
+		//video title could have unconconventional characters
+		title := strings.Replace(t, "\"", "", -1)
+		title = strings.Replace(title, "?", "", -1)
+
+		//launching download message
+		log.Printf("Downloading %s", title)
+
+		//download video
+		download(link, dirs[0], title+".mp4")
+	}
 }

@@ -10,7 +10,14 @@ import (
 
 	"encoding/xml"
 	"errors"
-	"github.com/GianniGM/GoBasicTraining/Exercise2/solution/tedfeed"
+
+	"io"
+
+	"strings"
+	"sync"
+
+	//TODO change me
+	"github.com/GianniGM/GoBasicTraining/Exercise4/solution/tedfeed"
 )
 
 const (
@@ -34,7 +41,38 @@ func parse(body []byte) (*tedfeed.Feed, error) {
 	return &f, nil
 }
 
+func download(url string, fPath string, title string, waitGroup sync.WaitGroup) {
+
+	// Decrement the counter when the goroutine completes.
+	defer waitGroup.Done()
+
+	//creating video.file
+	file, err := os.Create(filepath.Join(fPath, title))
+	if err != nil {
+		// Something went wrong creating video file, terminate
+		log.Fatalf("%s\n", err)
+	}
+
+	//GET the video
+	resp, err := http.Get(url)
+	defer resp.Body.Close()
+
+	if err != nil {
+		// Something went wrong downloading the video, terminate
+		log.Fatalf("%s\n", err)
+	}
+
+	if _, err := io.Copy(file, resp.Body); err != nil {
+		log.Fatalf("error: %s while downloading video: %s\n", title, err)
+	} else {
+		log.Printf("Downloaded file: %s\n", title)
+	}
+
+	file.Close()
+}
+
 func main() {
+
 	// Initializing tedfeed home directory as Exercise 1 was requesting
 	home := os.Getenv("HOME")
 	dirs := []string{filepath.Join(home, tf, videos), filepath.Join(home, tf, thumbs)}
@@ -62,11 +100,37 @@ func main() {
 		// Something went wrong reading the request body, terminate
 		log.Fatalf("%s\n", err)
 	}
+
 	fd, err := parse(output)
 	if err != nil {
 		log.Fatalln("error parsing the feed")
-
 	}
-	// Printing the title of the feed as Exercise 2 was reqesting
+
+	// Printing the title of the feed as Exercise 2 was requesting
 	log.Printf("The title of the feed is: %s\n", fd.Title)
+
+	//exercise 3 + 4 down here
+
+	//exercise 4: add waitGroup for wait all goroutine
+	var waitGroup sync.WaitGroup
+
+	m := fd.GetLinksList()
+	for t, link := range m {
+
+		//video Title could have unconconventional characters like '?' or ' " '
+		title := strings.Replace(t, "\"", "", -1)
+		title = strings.Replace(title, "?", "", -1)
+
+		//launching download message
+		log.Printf("Downloading %s", title)
+
+		//Exercise 4: incrementing counter of waitGroups
+		waitGroup.Add(1)
+
+		//launch download video task
+		go download(link, dirs[0], title+".mp4", waitGroup)
+	}
+
+	//Exercise 4: Wait for all downloads to complete.
+	waitGroup.Wait()
 }
