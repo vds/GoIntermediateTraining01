@@ -13,9 +13,9 @@ Let's setup the go package directory
 Create "main.go" file inside cmd folder
 
 ### Setup application home folder
-In "main.go" write a program that create main package and main function
-
 Hint: it is common for go application to have modules for binaries in the cmd folder
+
+In "main.go" write a program that create main package and main function.
 
 Check the existence of the folder "~/tedfeed", "~/tedfeed/videos",
 "~/tedfeed/thumbnails" if they don't exists, create them.
