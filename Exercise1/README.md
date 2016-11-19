@@ -20,7 +20,7 @@ Hint: it is common for go application to have modules for binaries in the cmd fo
 Check the existence of the folder "~/tedfeed", "~/tedfeed/videos",
 "~/tedfeed/thumbnails" if they don't exists, create them.
 
-Hint: **user.Current**, **os.Getenv** **os.Stat**, **os.Mkdir**, **os.MkdirAll**, **filepath.Join**
+Hint: **user.Current**, **os.Getenv** **os.Stat**, **os.IsNotExist**, **os.Mkdir**, **os.MkdirAll**
 
 
 ### Download the Ted.com atom feed
