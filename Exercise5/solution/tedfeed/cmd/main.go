@@ -18,13 +18,15 @@ import (
 
 	//TODO change me
 	"github.com/GianniGM/GoBasicTraining/Exercise5/solution/tedfeed"
+	"bytes"
 )
 
 const (
 	// Values used to initialize tedfeed home directory
-	tf     = "tedfeed"
-	videos = "videos"
-	thumbs = "thumbnails"
+	tf      = "tedfeed"
+	videos  = "videos"
+	thumbs  = "thumbnails"
+	catalog = "catalog"
 
 	// TED.com atom feed URL
 	url = "https://www.ted.com/talks/atom"
@@ -133,10 +135,38 @@ func main() {
 		go download(link, dirs[0], title+".mp4", waitGroup)
 	}
 
-	//Exercise 4: Wait for all downloads to complete.
-	waitGroup.Wait()
 
 	//Exercise 5: write on catalog
+	c := fd.ToCatalog()
 
+	//control if catalog file already exists open, decode and append
+	catalogPath := filepath.Join(home, tf, catalog)
+	file, err := os.Open(catalogPath)
+	defer file.Close()
 
+	if err != nil {
+		if os.IsNotExist(err) {
+
+			//if not create new file
+
+			//write catalog in the file
+
+			//close fileWriter
+
+		} else {
+			// Something went wrong opening file, terminate
+			log.Fatalf("%s\n", err)
+		}
+	} else {
+		//catalog file are already opened
+
+		//read all contents
+
+		//append to new catalog
+
+		//encode entire catalog
+	}
+
+	//Exercise 4: Wait for all downloads to complete.
+	waitGroup.Wait()
 }

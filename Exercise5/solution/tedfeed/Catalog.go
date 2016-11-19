@@ -5,41 +5,48 @@ import (
 	"encoding/gob"
 )
 
-type Catalog []Talk
-
-type Talk struct{
-	Title string
-	Duration string
+type Catalog struct{
+	Talks []Talk
+}
+type Talk struct {
+	Title       string
+	Duration    string
 	SpeakerName string
-	Link string
 }
 
-func CreateCatalog()(Catalog){
-	return make([]Talk, 0)
+func CreateCatalog() Catalog {
+	var c Catalog
+	c.Talks = make([]Talk, 0)
+
+	return c
 }
 
-func (c *Catalog) AddTalk(title string, duration string, speakerName string, link string){
+func (c *Catalog) AddTalk(title string, duration string, speakerName string) {
 
-	t:= Talk{title, duration, speakerName, link}
-	append(c, t)
+	t := Talk{title, duration, speakerName}
+	c.Talks = append(c.Talks, t)
 }
 
-func (c Catalog) DecodeCatalog(bBuffer *bytes.Buffer) (Feed, error) {
+func (c *Catalog) DecodeCatalog(bBuffer *bytes.Buffer) error {
 	dec := gob.NewDecoder(bBuffer)
 
 	err := dec.Decode(&c)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return c, nil
+
+	return nil
 }
 
-func (c Catalog) EncodeCatalog(bBuffer *bytes.Buffer, values string) error {
+func (c Catalog) EncodeCatalog(bBuffer *bytes.Buffer) error {
 	enc := gob.NewEncoder(bBuffer)
 
-	err := enc.Encode(values)
-	if err != nil {
-		return err
+	for _, values := range c.Talks {
+
+		err := enc.Encode(values)
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil

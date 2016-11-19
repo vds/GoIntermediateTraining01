@@ -1,11 +1,5 @@
 package tedfeed
 
-import (
-	"bytes"
-	"encoding/gob"
-	"fmt"
-	"log"
-)
 
 type Link struct {
 	Rel  string `xml:"rel,attr"`
@@ -51,3 +45,11 @@ func (fd Feed) GetLinksList() map[string]string {
 	return m
 }
 
+func (fd Feed) ToCatalog() Catalog {
+	c := CreateCatalog()
+	for _, entry := range fd.Entry {
+		c.AddTalk(entry.Title, entry.Duration, entry.SpeakerName)
+	}
+
+	return c
+}
