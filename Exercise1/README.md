@@ -14,7 +14,7 @@ Let's setup the go package directory
 ### Setup application home folder
 Create main package and main function
 
-Hint: is is common for go application to have modules for binaries in the cmd folder
+Hint: it is common for go application to have modules for binaries in the cmd folder
 
 Check the existence of the folder "~/tedfeed", "~/tedfeed/videos",
 "~/tedfeed/thumbnails" if they don't exists, create them.
