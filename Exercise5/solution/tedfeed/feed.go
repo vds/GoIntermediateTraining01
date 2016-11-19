@@ -61,7 +61,7 @@ func (fd Feed) DecodeCatalog(bBuffer bytes.Buffer) (string, error) {
 
 	var catalog string
 	for _, entry := range fd.Entry {
-		catalog = fmt.Printf("%s(%s): from %s\n", entry.Title, entry.Duration, entry.SpeakerName)
+		catalog = fmt.Sprintf("%s(%s): from %s\n", entry.Title, entry.Duration, entry.SpeakerName)
 	}
 	return catalog
 }

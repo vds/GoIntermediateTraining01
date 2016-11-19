@@ -134,6 +134,8 @@ func main() {
 		go download(link, dirs[0], title +".mp4", waitGroup)
 	}
 
+	//TODO handle catalog
+
 	//Exercise 4: Wait for all downloads to complete.
 	waitGroup.Wait()
 }
