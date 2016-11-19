@@ -15,9 +15,7 @@ Create "main.go" file inside cmd folder
 ### Setup application home folder
 Hint: it is common for go application to have modules for binaries in the cmd folder
 
-In "main.go" write a program that create main package and main function.
-
-Check the existence of the folder "~/tedfeed", "~/tedfeed/videos",
+In "main.go" write a program that check the existence of the folder "~/tedfeed", "~/tedfeed/videos",
 "~/tedfeed/thumbnails" if they don't exists, create them.
 
 Hint: **user.Current**, **os.Getenv** **os.Stat & os.IsNotExist**, **os.Mkdir**, **os.MkdirAll**
@@ -32,7 +30,8 @@ Hint: **http.Get**, **ioutil.ReadAll**
 Hint: don't forget to close the body of the response, defer is your friend.
 
 ### References
-* os package: https://golang.org/pkg/os/
-* user package: https://golang.org/pkg/os/user/
-* net/http package: https://golang.org/pkg/net/http/
-* io/ioutil package: https://golang.org/pkg/io/ioutil/
+* [os package](https://golang.org/pkg/os/)
+* [user package](https://golang.org/pkg/os/user/)
+* [net/http package](https://golang.org/pkg/net/http/)
+* [io/ioutil package](https://golang.org/pkg/io/ioutil/)
+
