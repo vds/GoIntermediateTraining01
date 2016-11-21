@@ -1,8 +1,8 @@
 # Download concurrently
-We'll learn how to use go powerful concurrency
+We'll learn how to use go powerful concurrency.
 
 ### Download concurrently
-Download 3 videos at the same time
+Download all videos at the same time.
 
 Hint: **go statment**, **sync.WaitGroup**
 
