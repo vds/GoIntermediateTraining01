@@ -1,5 +1,7 @@
 package tedfeed
 
+import "encoding/xml"
+
 type Link struct {
 	Rel  string `xml:"rel,attr"`
 	HRef string `xml:"href,attr"`
@@ -18,8 +20,8 @@ type Entry struct {
 }
 
 type Feed struct {
-	XMLName string  `xml:"feed"`
-	Updated string  `xml:"updated"`
-	Title   string  `xml:"title"`
-	Entry   []Entry `xml:"entry"`
+	XMLName xml.Name `xml:"feed"`
+	Updated string   `xml:"updated"`
+	Title   string   `xml:"title"`
+	Entry   []Entry  `xml:"entry"`
 }
