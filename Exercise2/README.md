@@ -76,7 +76,7 @@ Crate Link, Entry and Feed struct
 Hint: [Example of unmarshalling xml in go](https://golang.org/pkg/encoding/xml/#example_Unmarshal)
 
 ### Accessing feed data
-Unmarshal the xml file into a Feed struct instance and orint the Feed title to the screen
+Unmarshal the xml file into a Feed struct instance and print the Feed title to the screen
 
 Hint: xml.Unmarshal
 
