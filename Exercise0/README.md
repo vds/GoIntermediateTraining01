@@ -1,5 +1,7 @@
 # Hello World
-we'll learn the very basics of go, how to test the go environment, how to create the first package and to run our first applicatio.
+
+### Summary
+We'll learn the very basics of go, how to test the go environment, how to create the first package and to run our first application.
 
 ### Go environment check
 Let's test if our go environment is correctly setup:

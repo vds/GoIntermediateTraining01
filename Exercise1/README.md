@@ -1,5 +1,7 @@
 # tedfeed go package
-We'll create an application to download the newst videos from the popular website TED.com.
+
+### Summary
+We'll create an application to download the newest videos from the popular website TED.com.
 We are in no way associated with TED.com, but we love it! :)
 To do this we will use the [atom feed](https://en.wikipedia.org/wiki/Atom_(standard)) the website provides.
 We'll learn how to interact with the OS environment, how to deal with HTTP requests and buffers.
@@ -14,7 +16,7 @@ Let's setup the go package directory
 ### Setup application home folder
 Create main package and main function
 
-Hint: is is common for go application to have modules for binaries in the cmd folder
+Hint: it is common for go applications to have modules for binaries in the cmd folder.
 
 Check the existence of the folder "~/tedfeed", "~/tedfeed/videos",
 "~/tedfeed/thumbnails" if they don't exists, create them.

@@ -27,12 +27,4 @@ Exercise 4:
  * concurrency and the go command
  * wait groups
 
-Exercise 5:
- * gob
- 
-Exercise 6
- * flag
-
-References to go spec point to: https://golang.org/ref/spec
-
 The content of this repository is licensed under the Creative Commons Attribution 3.0 License, and code is licensed under a BSD license.

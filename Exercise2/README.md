@@ -1,22 +1,7 @@
 # Accessing information from the feed
-We'll learn how to use struct and how to unmarshal xml into our data types.
 
-From go spec:
-"A struct is a sequence of named elements, called fields, each of which has a name and a type. Field names may be specified explicitly or implicitly . Within a struct, non-blank field names must be unique."
-
-```go
-// An empty struct.
-struct {}
-
-// A struct with 6 fields.
-struct {
-	x, y int
-	u float32
-	_ float32  // padding
-	A *[]int
-	F func()
-}
-```
+### Summary
+We'll learn how to use structs and how to unmarshal xml into our data types.
 
 ### Define the application data model
 The xml subset we want to process looks like this:
@@ -71,7 +56,7 @@ Feed:
 
 Note the matching between the type attribute and the field attribute.
 
-Crate Link, Entry and Feed struct
+Crate Link, Entry and Feed structs
 
 Hint: [Example of unmarshalling xml in go](https://golang.org/pkg/encoding/xml/#example_Unmarshal)
 
