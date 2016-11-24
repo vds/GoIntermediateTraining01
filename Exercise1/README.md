@@ -18,7 +18,7 @@ Create main package and main function
 
 Hint: it is common for go applications to have modules for binaries in the cmd folder.
 
-Check the existence of the folder "~/tedfeed", "~/tedfeed/videos" if they don't exists, create them.
+Write a go application to check the existence of the folder "~/TedFeed", "~/TedFeed/Videos" if they don't exists, create them.
 
 Hint: **user.Current**, **os.Getenv**, **os.Stat & os.IsNotExist**, **os.Stat**, **os.Mkdir**, **os.MkdirAll**, **filepath.Join**
 

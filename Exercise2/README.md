@@ -63,7 +63,7 @@ Hint: [Example of unmarshalling xml in go](https://golang.org/pkg/encoding/xml/#
 ### Accessing feed data
 Unmarshal the xml file into a Feed struct instance and print the Feed title to the screen
 
-Hint: xml.Unmarshal
+Hint: **xml.Unmarshal**, **ioutil.ReadAll**
 
 ### References
 * [Struct types](https://golang.org/ref/spec#Struct_types)

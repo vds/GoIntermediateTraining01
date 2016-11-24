@@ -21,14 +21,12 @@ const (
 func main() {
 	// Initializing tedfeed home directory as Exercise 1 was requesting
 	home := os.Getenv("HOME")
-	dirs := []string{filepath.Join(home, tf, videos), filepath.Join(home, tf, thumbs)}
-	// Create video and thumbnails directories if they are missing
-	for _, d := range dirs {
-		if _, err := os.Stat(d); os.IsNotExist(err) {
-			if err := os.MkdirAll(d, 0755); err != nil {
-				// Something went wrong initializing the home, terminate
-				log.Fatalf("error: %s while creating directory: %s\n", d, err)
-			}
+	d := filepath.Join(home, tf, videos)
+	// Create application home directory if it's missing
+	if _, err := os.Stat(d); os.IsNotExist(err) {
+		if err := os.MkdirAll(d, 0755); err != nil {
+			// Something went wrong initializing the home, terminate
+			log.Fatalf("error: %s while creating directory: %s\n", d, err)
 		}
 	}
 
