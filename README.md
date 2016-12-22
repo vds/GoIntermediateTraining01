@@ -1,4 +1,4 @@
-# Go Intermediate Training - Exercise 01
+# Go Intermediate Training - 01
 This repository contains notes for Go intermediate exercise for classes/workshops. 
 The goal is to build a Ted (ted.com) video downloader.
 
