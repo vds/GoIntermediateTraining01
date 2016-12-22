@@ -1,5 +1,6 @@
-# GoBasicTraining
-This repository contains notes for Go basic training classes/workshops. 
+# Go Intermediate Training - Exercise 01
+This repository contains notes for Go intermediate exercise for classes/workshops. 
+The goal is to build a Ted (ted.com) video downloader.
 
 Exercise 0:
  * testing go environment
