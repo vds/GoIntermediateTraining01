@@ -14,7 +14,7 @@ type Entry struct {
 	TalkId      string `xml:"ted:talkid"`
 	ImageURL    string `xml:"ted:image"`
 	Duration    string `xml:"ted:duration"`
-	SpeakerName string `xml:"ted:speakername"`
+	SpeakerName string `xml:"ted:speakerName"`
 	Title       string `xml:"title"`
 	Link        []Link `xml:"link"`
 	Update      string `xml:"update"`
