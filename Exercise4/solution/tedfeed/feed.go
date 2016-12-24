@@ -11,10 +11,10 @@ type Link struct {
 // Entry maps a subset of the atom entry element
 type Entry struct {
 	Id          string `xml:"id"`
-	TalkId      string `xml:"ted:talkid"`
-	ImageURL    string `xml:"ted:image"`
-	Duration    string `xml:"ted:duration"`
-	SpeakerName string `xml:"ted:speakerName"`
+	TalkId      string `xml:"http://www.ted.com/atom/extensions/ talkid"`
+	ImageURL    string `xml:"http://www.ted.com/atom/extensions/ image"`
+	Duration    string `xml:"http://www.ted.com/atom/extensions/ duration"`
+	SpeakerName string `xml:"http://www.ted.com/atom/extensions/ speakerName"`
 	Title       string `xml:"title"`
 	Link        []Link `xml:"link"`
 	Update      string `xml:"update"`
