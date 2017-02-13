@@ -15,7 +15,7 @@ The xml subset we want to process looks like this:
     <ted:talkid></ted:talkid>
     <ted:image></ted:image>
     <ted:duration></ted:duration>
-    <ted:speakername></ted:speakername>
+    <ted:speakerName></ted:speakerName>
     <title></title>
     <update></update>
     <summary></summary>
@@ -41,7 +41,7 @@ Entry:
 	TalkId      string `xml:"ted:talkid"`
 	ImageURL    string `xml:"ted:image"`
 	Duration    string `xml:"ted:duration"`
-	SpeakerName string `xml:"ted:speakername"`
+	SpeakerName string `xml:"ted:speakerName"`
 	Title       string `xml:"title"`
 	Update      string `xml:"update"`
 	Summary     string `xml:"summary"`
